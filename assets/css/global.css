@@ -1,0 +1,712 @@
+/* ==========================================================================
+   1. VARIÁVEIS GLOBAIS
+   ========================================================================== */
+
+:root {
+  /* Paleta de cores corporativa */
+  --blue-institutional: #1f3b57;
+  --blue-dynamic: #284b6a;
+  --botao-primario: #1f6feb;
+  --botao-secundario: #551feb;
+  --blue-ice-accent: #e2ebf4;
+  --gray-slate: #708090;
+  --gray-admin: #ddd;
+
+  /* Estados e feedbacks */
+  --bg-card: #ffffff;
+  --text-main: #202529;
+  --text-muted: #535c68;
+  --success-color: #2e7d32;
+  --error-color: #c62828;
+
+  /* Estrutura */
+  --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --radius: 6px;
+  --radius-lg: 12px;
+  --transition: all 0.25s ease-in-out;
+  --shadow-sm: 0 2px 4px rgba(0, 75, 135, 0.08);
+  --shadow: 0 4px 12px rgba(0, 75, 135, 0.12);
+  --shadow-dropdown: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+  /* Larguras */
+  --container-max: 1200px;
+}
+
+/* ==========================================================================
+   2. RESET E CONFIGURAÇÕES GLOBAIS
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-stack);
+  background: var(--bg-card);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* ==========================================================================
+   3. ESTRUTURA PRINCIPAL
+   ========================================================================== */
+
+header {
+  background: var(--blue-institutional);
+  color: var(--bg-card);
+  padding: 22px 32px;
+}
+
+header h1,
+header h2,
+header h3 {
+  line-height: 1.25;
+}
+
+nav {
+  background: var(--blue-dynamic);
+  padding: 10px 32px;
+}
+
+main {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 28px 32px;
+}
+
+/* ==========================================================================
+   4. MENU E DROPDOWN
+   ========================================================================== */
+
+.menu {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.menu > li {
+  position: relative;
+}
+
+.menu a,
+nav a {
+  color: var(--bg-card);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 20px;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.menu a:hover {
+  background: var(--botao-primario);
+}
+
+.dropdown-content {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 190px;
+  list-style: none;
+  background: var(--bg-card);
+  border-radius: 15px;
+  box-shadow: var(--shadow-dropdown);
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  z-index: 1000;
+}
+
+.dropdown-content li {
+  width: 100%;
+}
+
+.dropdown-content a {
+  width: 100%;
+  color: var(--gray-slate);
+  padding: 12px 16px;
+  border-radius: 15px;
+}
+
+.dropdown-content a:hover {
+  color: var(--bg-card);
+  background: var(--botao-primario);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown .seta {
+  display: inline-flex;
+  margin-left: 4px;
+  font-size: 10px;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.dropdown:hover .seta {
+  transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   5. TABELAS
+   ========================================================================== */
+
+table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+  background: var(--bg-card);
+}
+
+th,
+td {
+  border: 1px solid var(--gray-admin);
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  background: var(--blue-ice-accent);
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   6. FORMULÁRIOS
+   ========================================================================== */
+
+form {
+  width: 100%;
+  max-width: 820px;
+  background: var(--bg-card);
+  padding: 15px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--text-main);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  margin-top: 4px;
+  padding: 9px 10px;
+  border: 1px solid var(--gray-admin);
+  border-radius: var(--radius);
+  color: var(--text-main);
+  background: var(--bg-card);
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--botao-primario);
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.12);
+}
+
+/* ==========================================================================
+   7. BOTÕES
+   ========================================================================== */
+
+button,
+.botao {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 9px 13px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--botao-primario);
+  color: var(--bg-card);
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+button:hover,
+.botao:hover {
+  background: var(--blue-dynamic);
+  transform: translateY(-1px);
+}
+
+.perigo {
+  background: var(--error-color);
+}
+
+.perigo:hover {
+  background: #a91f1f;
+}
+
+/* ==========================================================================
+   8. CARDS
+   ========================================================================== */
+
+.card {
+  background: var(--bg-card);
+  padding: 16px;
+  margin-bottom: 12px;
+  border-left: 5px solid var(--botao-primario);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   9. POPUP
+   ========================================================================== */
+
+.popup-fundo {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.55);
+  transition: visibility 0s linear 0.25s, opacity 0.25s ease;
+}
+
+.popup-fundo.ativo {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 0.25s ease;
+}
+
+.popup-janela {
+  width: 90%;
+  max-width: 760px;
+  max-height: 90vh;
+  overflow: hidden;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  animation: abrirPopup 0.35s ease forwards;
+}
+
+.popup-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--gray-admin);
+}
+
+.popup-cabecalho h2 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.popup-fechar {
+  width: auto;
+  margin-top: 0;
+  padding: 0 4px;
+  border: none;
+  background: transparent;
+  color: #000;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.popup-fechar:hover {
+  background: transparent;
+  transform: scale(1.04);
+}
+
+.popup-conteudo {
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 75vh;
+}
+
+/* ==========================================================================
+   10. ANIMAÇÕES
+   ========================================================================== */
+
+@keyframes abrirPopup {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fecharPopup {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+  }
+}
+
+/* ==========================================================================
+   11. RESPONSIVIDADE - NOTEBOOK / DESKTOP MENOR
+   ========================================================================== */
+
+@media (max-width: 1199px) {
+  header {
+    padding: 20px 24px;
+  }
+
+  nav {
+    padding: 10px 24px;
+  }
+
+  main {
+    padding: 24px;
+  }
+
+  .menu a {
+    padding: 14px 16px;
+  }
+
+  form {
+    max-width: 760px;
+  }
+}
+
+/* ==========================================================================
+   12. RESPONSIVIDADE - TABLET
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  header {
+    padding: 18px 20px;
+  }
+
+  nav {
+    padding: 10px 20px;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+  }
+
+  .menu a {
+    padding: 12px 14px;
+  }
+
+  form {
+    max-width: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 15px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  .popup-janela {
+    width: 92%;
+    max-width: 680px;
+  }
+
+  .popup-conteudo {
+    max-height: 72vh;
+  }
+}
+
+/* ==========================================================================
+   13. RESPONSIVIDADE - CELULAR
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  header {
+    padding: 16px;
+    text-align: center;
+  }
+
+  header h1,
+  header h2,
+  header h3 {
+    font-size: 22px;
+  }
+
+  nav {
+    padding: 8px;
+  }
+
+  .menu {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+
+  .menu > li {
+    width: 100%;
+  }
+
+  .menu a {
+    width: 100%;
+    justify-content: space-between;
+    padding: 13px 14px;
+    font-size: 15px;
+  }
+
+  .dropdown-content {
+    position: static;
+    width: 100%;
+    min-width: 100%;
+    margin-top: 4px;
+    box-shadow: none;
+    border-radius: var(--radius);
+    transform: none;
+    background: rgba(255, 255, 255, 0.96);
+  }
+
+  .dropdown-content a {
+    padding: 12px 18px;
+    font-size: 14px;
+    color: var(--gray-slate);
+    border-radius: var(--radius);
+  }
+
+  .dropdown:hover .dropdown-content {
+    transform: none;
+  }
+
+  main {
+    padding: 16px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  form {
+    padding: 14px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  button,
+  .botao {
+    width: 100%;
+    padding: 11px 14px;
+    text-align: center;
+    font-size: 15px;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 14px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+
+  .popup-fundo {
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .popup-janela {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 24px);
+    margin-top: 12px;
+    border-radius: 10px;
+  }
+
+  .popup-cabecalho {
+    padding: 14px 16px;
+  }
+
+  .popup-cabecalho h2 {
+    font-size: 19px;
+  }
+
+  .popup-fechar {
+    width: auto;
+    padding: 0 4px;
+    font-size: 28px;
+  }
+
+  .popup-conteudo {
+    padding: 16px;
+    max-height: calc(100vh - 120px);
+  }
+}
+
+/* ==========================================================================
+   14. RESPONSIVIDADE - CELULAR PEQUENO
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  header {
+    padding: 14px 12px;
+  }
+
+  header h1,
+  header h2,
+  header h3 {
+    font-size: 20px;
+  }
+
+  nav {
+    padding: 6px;
+  }
+
+  .menu a {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  main {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 12px;
+    border-left-width: 4px;
+  }
+
+  form {
+    padding: 12px;
+  }
+
+  button,
+  .botao {
+    padding: 11px 12px;
+    font-size: 14px;
+  }
+
+  table {
+    font-size: 13px;
+  }
+
+  th,
+  td {
+    padding: 7px;
+  }
+
+  .popup-fundo {
+    padding: 8px;
+  }
+
+  .popup-janela {
+    max-height: calc(100vh - 16px);
+    margin-top: 8px;
+    border-radius: 8px;
+  }
+
+  .popup-cabecalho {
+    padding: 12px 14px;
+  }
+
+  .popup-cabecalho h2 {
+    font-size: 18px;
+  }
+
+  .popup-conteudo {
+    padding: 14px;
+    max-height: calc(100vh - 105px);
+  }
+}
+
+/* Regras específicas para a impressão */
+@media print {
+    /* 1. Oculta a barra de navegação e o cabeçalho */
+    nav, header, .menu, .navbar {
+        display: none !important;
+    }
+
+    /* 2. Oculta o próprio botão de imprimir (para não sair no papel) */
+    button, .botao {
+        display: none !important;
+    }
+
+    /* 3. Garante que apenas o conteúdo dos cards apareça */
+    body {
+        background: white;
+        font-size: 12pt;
+        color: black;
+    }
+
+    /* Opcional: Ajusta o layout dos cards para ficarem melhores no papel */
+    .card {
+        page-break-inside: avoid; /* Evita que um card seja cortado entre duas páginas */
+        width: 100%;
+        margin: 5px 0;
+    }
+}

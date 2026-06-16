@@ -1,0 +1,41 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="white", pad="0.4", nodesep="0.45", ranksep="0.65", splines=ortho];
+  node [shape=record, fontname="Arial", fontsize=10, style="rounded,filled", fillcolor="#F7F9FC", color="#2F4F6F"];
+  edge [fontname="Arial", fontsize=9, color="#444444", arrowsize=0.7];
+
+  Controller [label="{Controller|# view(view:string, dados:array): void\l# redirecionar(rota:string): void\l}", fillcolor="#E8F1FA"];
+  SessaoRepositorio [label="{SessaoRepositorio|+ iniciar(): void\l+ listar(tabela:string): array\l+ buscarPorId(tabela:string, id:int): ?array\l+ salvar(tabela:string, dados:array): void\l+ atualizar(tabela:string, id:int, novosDados:array): void\l+ excluir(tabela:string, id:int): void\l- proximoId(tabela:string): int\l}", fillcolor="#EAF7EA"];
+
+  ColaboradorController [label="{ColaboradorController|+ index(): void\l+ criar(): void\l+ salvar(): void\l+ excluir(): void\l}"];
+  SetorController [label="{SetorController|+ index(): void\l+ criar(): void\l+ salvar(): void\l+ excluir(): void\l}"];
+  CargoController [label="{CargoController|+ index(): void\l+ criar(): void\l+ salvar(): void\l+ excluir(): void\l}"];
+  EpiController [label="{EpiController|+ index(): void\l+ criar(): void\l+ salvar(): void\l+ excluir(): void\l}"];
+  EntregaEpiController [label="{EntregaEpiController|+ index(): void\l+ criar(): void\l+ salvar(): void\l+ excluir(): void\l}"];
+  AcidenteController [label="{AcidenteController|+ index(): void\l+ criar(): void\l+ salvar(): void\l+ excluir(): void\l}"];
+  ExameMedicoController [label="{ExameMedicoController|+ index(): void\l+ criar(): void\l+ salvar(): void\l+ excluir(): void\l}"];
+  TreinamentoController [label="{TreinamentoController|+ index(): void\l+ criar(): void\l+ salvar(): void\l+ excluir(): void\l}"];
+  InspecaoController [label="{InspecaoController|+ index(): void\l+ criar(): void\l+ salvar(): void\l+ excluir(): void\l}"];
+  RelatorioController [label="{RelatorioController|+ index(): void\l}"];
+
+  ColaboradorController -> Controller [arrowhead=empty, label="extends"];
+  SetorController -> Controller [arrowhead=empty, label="extends"];
+  CargoController -> Controller [arrowhead=empty, label="extends"];
+  EpiController -> Controller [arrowhead=empty, label="extends"];
+  EntregaEpiController -> Controller [arrowhead=empty, label="extends"];
+  AcidenteController -> Controller [arrowhead=empty, label="extends"];
+  ExameMedicoController -> Controller [arrowhead=empty, label="extends"];
+  TreinamentoController -> Controller [arrowhead=empty, label="extends"];
+  InspecaoController -> Controller [arrowhead=empty, label="extends"];
+  RelatorioController -> Controller [arrowhead=empty, label="extends"];
+
+  ColaboradorController -> SessaoRepositorio [style=dashed, label="usa"];
+  SetorController -> SessaoRepositorio [style=dashed, label="usa"];
+  CargoController -> SessaoRepositorio [style=dashed, label="usa"];
+  EpiController -> SessaoRepositorio [style=dashed, label="usa"];
+  EntregaEpiController -> SessaoRepositorio [style=dashed, label="usa"];
+  AcidenteController -> SessaoRepositorio [style=dashed, label="usa"];
+  ExameMedicoController -> SessaoRepositorio [style=dashed, label="usa"];
+  TreinamentoController -> SessaoRepositorio [style=dashed, label="usa"];
+  InspecaoController -> SessaoRepositorio [style=dashed, label="usa"];
+  RelatorioController -> SessaoRepositorio [style=dashed, label="usa"];
+}

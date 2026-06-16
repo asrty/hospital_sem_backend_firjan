@@ -1,0 +1,95 @@
+classDiagram
+    class Controller {
+        #view(string view, array dados) void
+        #redirecionar(string rota) void
+    }
+
+    class SessaoRepositorio {
+        +iniciar() void
+        +listar(string tabela) array
+        +buscarPorId(string tabela, int id) ?array
+        +salvar(string tabela, array dados) void
+        +atualizar(string tabela, int id, array novosDados) void
+        +excluir(string tabela, int id) void
+        -proximoId(string tabela) int
+    }
+
+    class ColaboradorController {
+        +index() void
+        +criar() void
+        +salvar() void
+        +excluir() void
+    }
+    class SetorController {
+        +index() void
+        +criar() void
+        +salvar() void
+        +excluir() void
+    }
+    class CargoController {
+        +index() void
+        +criar() void
+        +salvar() void
+        +excluir() void
+    }
+    class EpiController {
+        +index() void
+        +criar() void
+        +salvar() void
+        +excluir() void
+    }
+    class EntregaEpiController {
+        +index() void
+        +criar() void
+        +salvar() void
+        +excluir() void
+    }
+    class AcidenteController {
+        +index() void
+        +criar() void
+        +salvar() void
+        +excluir() void
+    }
+    class ExameMedicoController {
+        +index() void
+        +criar() void
+        +salvar() void
+        +excluir() void
+    }
+    class TreinamentoController {
+        +index() void
+        +criar() void
+        +salvar() void
+        +excluir() void
+    }
+    class InspecaoController {
+        +index() void
+        +criar() void
+        +salvar() void
+        +excluir() void
+    }
+    class RelatorioController {
+        +index() void
+    }
+
+    Controller <|-- ColaboradorController
+    Controller <|-- SetorController
+    Controller <|-- CargoController
+    Controller <|-- EpiController
+    Controller <|-- EntregaEpiController
+    Controller <|-- AcidenteController
+    Controller <|-- ExameMedicoController
+    Controller <|-- TreinamentoController
+    Controller <|-- InspecaoController
+    Controller <|-- RelatorioController
+
+    ColaboradorController ..> SessaoRepositorio : usa
+    SetorController ..> SessaoRepositorio : usa
+    CargoController ..> SessaoRepositorio : usa
+    EpiController ..> SessaoRepositorio : usa
+    EntregaEpiController ..> SessaoRepositorio : usa
+    AcidenteController ..> SessaoRepositorio : usa
+    ExameMedicoController ..> SessaoRepositorio : usa
+    TreinamentoController ..> SessaoRepositorio : usa
+    InspecaoController ..> SessaoRepositorio : usa
+    RelatorioController ..> SessaoRepositorio : usa
