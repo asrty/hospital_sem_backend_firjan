@@ -57,6 +57,24 @@ $action = $editando
         </option>
     </select>
 
+    <label>CAT Emitida</label>
+    <select name="cat_emitida" required>
+        <option value="">Selecione</option>
+
+        <option 
+            value="Sim"
+            <?= (($acidente['cat_emitida'] ?? '') === 'Sim') ? 'selected' : '' ?>
+        >
+            Sim
+        </option>
+
+        <option 
+            value="Não"
+            <?= (($acidente['cat_emitida'] ?? '') === 'Não') ? 'selected' : '' ?>
+        >
+            Não
+        </option>
+
     <button type="submit" class="botao">
         <?= $editando ? 'Atualizar' : 'Salvar' ?>
     </button>

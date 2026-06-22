@@ -26,7 +26,7 @@ class AcidenteController extends Controller
     {
         SessaoRepositorio::salvar($this->tabela, [
             'colaborador' => $_POST['colaborador'] ?? '',
-            'data_acidente' => $_POST['data_acidente'] ?? '',
+            'data_acidente' => $_POST['data'] ?? '',
             'gravidade' => $_POST['gravidade'] ?? '',
             'descricao' => $_POST['descricao'] ?? '',
             'cat_emitida' => $_POST['cat_emitida'] ?? 'Não'
@@ -61,10 +61,11 @@ class AcidenteController extends Controller
         $id = (int) ($_POST['id'] ?? 0);
 
         SessaoRepositorio::atualizar('acidentes', $id, [
-            'data' => $_POST['data'] ?? '',
+            'data_acidente' => $_POST['data'] ?? '',
             'colaborador' => $_POST['colaborador'] ?? '',
             'descricao' => $_POST['descricao'] ?? '',
-            'gravidade' => $_POST['gravidade'] ?? ''
+            'gravidade' => $_POST['gravidade'] ?? '',
+            'cat_emitida' => $_POST['cat_emitida'] ?? 'Não'
         ]);
 
         header('Location: index.php?rota=acidentes');
